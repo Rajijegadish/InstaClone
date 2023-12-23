@@ -1,0 +1,47 @@
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import { Avatar } from "@mui/material";
+import React from "react";
+import "./Post.css";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import TelegramIcon from "@mui/icons-material/Telegram";
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import { Container , Col} from "react-bootstrap";
+
+function Post({ user, postImage, likes, timestamp }) {
+  return (
+    <Container>
+      <Col sm={10}>
+        <div className="post">
+          <div className="post__header">
+            <div className="post__headerAuthor">
+              <Avatar style={{ marginRight: "10px" }}>
+                {user.charAt(0).toUpperCase()}
+              </Avatar>{" "}
+              {user} • <span>{timestamp}</span>
+            </div>
+            <MoreHorizIcon />
+          </div>
+          <div className="post__image">
+            <img src={postImage} alt="Post Image" />
+          </div>
+          <div className="post__footer">
+            <div className="post__footerIcons">
+              <div className="post__iconsMain p-2">
+                <FavoriteBorderIcon />
+                <ChatBubbleOutlineIcon/>
+                <TelegramIcon />
+              </div>
+              <div className="post__iconSave">
+                <BookmarkBorderIcon />
+              </div>
+            </div>
+            Liked by {likes} people.
+          </div>
+        </div>
+      </Col>
+    </Container>    
+  );
+}
+
+export default Post;
